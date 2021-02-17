@@ -1,0 +1,109 @@
+:root {
+  /* Color */
+  --color-yellow: #e5d3a5;
+
+  /* Size */
+  --size-space: 20px;
+  --size-logo: 80px;
+  --size-btn: 60px;
+  --size-thumbnail: 240px;
+
+  /* Animation */
+  --animation-duration: 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  padding: var(--size-space);
+  background-color: var(--color-yellow);
+}
+
+.header {
+  margin-bottom: var(--size-space);
+}
+
+.logo {
+  width: var(--size-logo);
+  cursor: pointer;
+  transition: transform var(--animation-duration);
+}
+
+.main {
+  display: flex;
+  width: 80%;
+  height: 90%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.btn {
+  margin-bottom: var(--size-space);
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transition: transform var(--animation-duration);
+}
+
+.imgBtn {
+  width: var(--size-btn);
+}
+
+.cards {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  width: 80%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  cursor: pointer;
+  transition: transform var(--animation-duration);
+}
+
+.card__thumbnail {
+  width: var(--size-thumbnail);
+}
+
+.logo:hover,
+.btn:hover,
+.card:not(.active):hover {
+  transform: scale(1.1);
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(105, 105, 105, 0.7);
+  cursor: pointer;
+}
+
+.modal__thumbnail {
+  width: calc(var(--size-thumbnail) * 2);
+}
+
+.card.active .modal {
+  display: flex;
+}
