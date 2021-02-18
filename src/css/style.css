@@ -53,6 +53,7 @@ body {
   margin-bottom: var(--size-space);
   border: 0;
   background: none;
+  outline: none;
   cursor: pointer;
   transition: transform var(--animation-duration);
 }
