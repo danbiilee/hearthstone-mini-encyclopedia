@@ -81,29 +81,27 @@ body {
   width: var(--size-thumbnail);
 }
 
-.logo:hover,
-.btn:hover,
-.card:not(.active):hover {
+.noModal .logo:hover,
+.noModal .btn:hover,
+.noModal .card:hover {
   transform: scale(1.1);
 }
 
 .modal {
-  display: none;
   position: absolute;
   top: 0;
   left: 0;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
   background: rgba(105, 105, 105, 0.7);
   cursor: pointer;
+  transform: scaleY(0);
+  transition: all var(--animation-duration);
 }
 
-.modal__thumbnail {
-  width: calc(var(--size-thumbnail) * 2);
-}
-
-.card.active .modal {
-  display: flex;
+.modal.display {
+  transform: scaleY(1);
 }

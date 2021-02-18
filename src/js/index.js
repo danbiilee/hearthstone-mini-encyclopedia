@@ -28,36 +28,35 @@ function getHTMLString(card) {
               alt="${card.name}"
               class="card__thumbnail"
             />
-            <div class="modal">
-              <img
-                class="modal__thumbnail"
-                src="${card.img}"
-              />
-            </div>
           </li>`;
 }
 
-// 카드 클릭 이벤트 리스너 등록
-function setCardEventListener() {
+// 모달 이벤트 리스너 등록
+function setModalEventListener() {
   const cards = document.querySelector(".cards");
-  // cards.forEach((item) =>
-  //   item.addEventListener("click", (e) => onClickCard(e)),
-  // );
-  cards.addEventListener("click", (e) => onClickCard(e, cards));
+  const modal = document.querySelector(".modal");
+  cards.addEventListener("click", (e) => onClickCard(e));
+  modal.addEventListener("click", (e) => onClickCard(e));
 }
 
-// 카드 클릭 이벤트 핸들러: 모달 오픈
-function onClickCard(e, container) {
-  const li = e.target.closest(".card");
+// 카드 클릭 -> 모달 오픈
+function onClickCard(e) {
+  const body = document.querySelector("body");
+  const modal = document.querySelector(".modal");
+  // CSS hover 제어
+  body.classList.toggle("noModal");
+  setTimeout(() => modal.classList.toggle("display"), 300);
 
-  if (!li) {
+  if (e.target.tagName !== "IMG") {
     return;
   }
-  if (!container.contains(li)) {
-    return;
-  }
 
-  li.classList.add("active");
+  const img = document.createElement("img");
+  img.src = e.target.src;
+  if (modal.hasChildNodes()) {
+    modal.removeChild(modal.firstChild);
+  }
+  modal.appendChild(img);
 }
 
 /*
@@ -70,7 +69,7 @@ loadCards()
   .then((cards) => {
     renderCards(cards); // 렌더
     // 이벤트 핸들러
-    setCardEventListener(); // 카드 클릭
+    setModalEventListener(); // 카드 클릭
     // 버튼 클릭
   })
   .catch(console.log);
