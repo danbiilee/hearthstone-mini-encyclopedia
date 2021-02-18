@@ -84,13 +84,12 @@ function onClickCard(e) {
 // 버튼 이벤트 리스너 등록
 function setBtnEventListener() {
   const buttons = document.querySelector(".buttons");
-  buttons.addEventListener("click", (e) => reRenderCards(e));
+  buttons.addEventListener("click", (e) => reLoadCards(e));
 }
 
-//
-function reRenderCards(e) {
+// 카드목록 재요청
+function reLoadCards(e) {
   const { key, value } = e.target.dataset;
-
   if (!key || !value) {
     return;
   }
